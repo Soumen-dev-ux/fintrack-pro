@@ -1,17 +1,9 @@
-// ==========================================
-// DATA
-// ==========================================
-
 let transactions =
     JSON.parse(localStorage.getItem("transactions")) || [];
 
 let currency =
     localStorage.getItem("currency") || "$";
 
-
-// ==========================================
-// ELEMENTS
-// ==========================================
 
 const modal =
     document.getElementById("transactionModal");
@@ -38,10 +30,6 @@ const categoryFilter =
     document.getElementById("categoryFilter");
 
 
-// ==========================================
-// MODAL
-// ==========================================
-
 openModal.addEventListener("click", () => {
 
     modal.classList.add("show");
@@ -66,10 +54,6 @@ modal.addEventListener("click", (e) => {
 
 });
 
-
-// ==========================================
-// ADD TRANSACTION
-// ==========================================
 
 form.addEventListener("submit", (e) => {
 
@@ -123,10 +107,6 @@ form.addEventListener("submit", (e) => {
 });
 
 
-// ==========================================
-// SAVE
-// ==========================================
-
 function saveTransactions() {
 
     localStorage.setItem(
@@ -136,10 +116,6 @@ function saveTransactions() {
 
 }
 
-
-// ==========================================
-// RENDER TRANSACTIONS
-// ==========================================
 
 function renderTransactions() {
 
@@ -207,10 +183,6 @@ function renderTransactions() {
 }
 
 
-// ==========================================
-// CREATE TABLE ROW
-// ==========================================
-
 function createTransactionRow(transaction) {
 
     const row =
@@ -276,10 +248,6 @@ function createTransactionRow(transaction) {
 }
 
 
-// ==========================================
-// DELETE
-// ==========================================
-
 function deleteTransaction(id) {
 
     transactions =
@@ -297,10 +265,6 @@ function deleteTransaction(id) {
 
 }
 
-
-// ==========================================
-// DASHBOARD
-// ==========================================
 
 function updateDashboard() {
 
@@ -352,10 +316,6 @@ function updateDashboard() {
 
 }
 
-
-// ==========================================
-// CHART
-// ==========================================
 
 let cashFlowChart;
 
@@ -427,10 +387,6 @@ function updateChart(income, expense) {
 }
 
 
-// ==========================================
-// SEARCH
-// ==========================================
-
 searchInput.addEventListener(
     "input",
     renderTransactions
@@ -442,10 +398,6 @@ categoryFilter.addEventListener(
     renderTransactions
 );
 
-
-// ==========================================
-// NAVIGATION
-// ==========================================
 
 const navItems =
     document.querySelectorAll(".nav-item[data-section]");
@@ -502,10 +454,6 @@ navItems.forEach(item => {
 });
 
 
-// ==========================================
-// DARK MODE
-// ==========================================
-
 document
     .getElementById("darkModeBtn")
     .addEventListener("click", () => {
@@ -529,10 +477,6 @@ if (
 }
 
 
-// ==========================================
-// SETTINGS
-// ==========================================
-
 document
     .getElementById("saveSettings")
     .addEventListener("click", () => {
@@ -553,10 +497,6 @@ document
 
     });
 
-
-// ==========================================
-// UTILITIES
-// ==========================================
 
 function formatDate(date) {
 
@@ -585,21 +525,10 @@ function escapeHTML(text) {
 }
 
 
-// ==========================================
-// INITIAL LOAD
-// ==========================================
-
 renderTransactions();
 
 updateDashboard();
 
-
-// ==========================================
-// AUTHENTICATION
-// ==========================================
-
-
-// ---------- LOGOUT ----------
 
 const logoutButton =
     document.querySelector(".logout");
@@ -623,8 +552,6 @@ if (logoutButton) {
 
 }
 
-
-// ---------- PASSWORD TOGGLE ----------
 
 function togglePassword(inputId, button) {
 
@@ -655,8 +582,6 @@ function togglePassword(inputId, button) {
 
 }
 
-
-// ---------- REGISTER ----------
 
 const registerForm =
     document.getElementById("registerForm");
@@ -698,8 +623,6 @@ if (registerForm) {
                     .value;
 
 
-            // PASSWORD CHECK
-
             if (password !== confirmPassword) {
 
                 alert("Passwords do not match.");
@@ -708,8 +631,6 @@ if (registerForm) {
 
             }
 
-
-            // CHECK EXISTING USER
 
             const existingUser =
                 JSON.parse(
@@ -730,8 +651,6 @@ if (registerForm) {
 
             }
 
-
-            // SAVE USER
 
             const user = {
 
@@ -763,8 +682,6 @@ if (registerForm) {
 
 }
 
-
-// ---------- LOGIN ----------
 
 const loginForm =
     document.getElementById("loginForm");
@@ -799,8 +716,6 @@ if (loginForm) {
                 );
 
 
-            // NO USER
-
             if (!user) {
 
                 alert(
@@ -811,8 +726,6 @@ if (loginForm) {
 
             }
 
-
-            // INVALID LOGIN
 
             if (
                 user.email !== email ||
@@ -827,8 +740,6 @@ if (loginForm) {
 
             }
 
-
-            // LOGIN SUCCESS
 
             localStorage.setItem(
                 "isLoggedIn",
@@ -850,8 +761,6 @@ if (loginForm) {
 
 }
 
-
-// ---------- FORGOT PASSWORD ----------
 
 const forgotPassword =
     document.getElementById("forgotPassword");
